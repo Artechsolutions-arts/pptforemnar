@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma AI Platform — On-Premises Proposal</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050A14;
+            --card: #0D1526;
+            --border: rgba(99, 179, 237, 0.12);
+            --accent: #3B82F6;
+            --accent2: #10B981;
+            --accent3: #8B5CF6;
+            --accent4: #F59E0B;
+            --text: #E2E8F0;
+            --dim: #64748B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 10, 20, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 17px;
+        }
+
+        .nav-name {
+            font-size: 1rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .nav-sub {
+            font-size: 0.68rem;
+            color: var(--dim);
+            display: block;
+        }
+
+        .nav-badge {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 88px 64px 72px;
+            background: radial-gradient(ellipse at 20% 60%, rgba(59, 130, 246, 0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 40%, rgba(139, 92, 246, 0.06) 0%, transparent 55%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .g {
+            background: linear-gradient(135deg, #34D399, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 1.08rem;
+            color: var(--dim);
+            max-width: 740px;
+            line-height: 1.85;
+            margin-bottom: 44px;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 20px;
+        }
+
+        .pill-icon {
+            font-size: 1.15rem;
+        }
+
+        .pill-text strong {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .pill-text span {
+            font-size: 0.72rem;
+            color: var(--dim);
+        }
+
+        /* SECTIONS */
+        .sec {
+            padding: 68px 64px;
+        }
+
+        .sec-alt {
+            background: rgba(13, 21, 38, 0.55);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sec-tag {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .sec-h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .sec-sub {
+            color: var(--dim);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            max-width: 760px;
+            margin-bottom: 48px;
+        }
+
+        /* WHY ON-PREM */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .benefit-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            padding: 22px;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            border-color: rgba(99, 179, 237, 0.35);
+            transform: translateY(-3px);
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .benefit-card p {
+            font-size: 0.8rem;
+            color: var(--dim);
+            line-height: 1.65;
+        }
+
+        /* MAC SPECS */
+        .mac-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .mac-highlight {
+            background: rgba(59, 130, 246, 0.06);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .mac-highlight h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-key {
+            font-size: 0.78rem;
+            color: var(--dim);
+        }
+
+        .spec-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent2);
+        }
+
+        .spec-val.b {
+            color: var(--accent);
+        }
+
+        .spec-val.p {
+            color: var(--accent3);
+        }
+
+        /* RAG FLOW */
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .flow-step {
+            display: grid;
+            grid-template-columns: 56px 220px 1fr;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .flow-step:last-child {
+            border-bottom: none;
+        }
+
+        .flow-step:hover {
+            background: rgba(59, 130, 246, 0.04);
+        }
+
+        .flow-num {
+            background: rgba(59, 130, 246, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--accent);
+            border-right: 1px solid var(--border);
+        }
+
+        .flow-name {
+            padding: 18px 20px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flow-icon {
+            font-size: 1.25rem;
+        }
+
+        .flow-name h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .flow-name small {
+            font-size: 0.7rem;
+            color: var(--dim);
+        }
+
+        .flow-detail {
+            padding: 18px 24px;
+        }
+
+        .flow-detail p {
+            font-size: 0.82rem;
+            color: #94A3B8;
+            line-height: 1.65;
+        }
+
+        /* SOURCE CITATION FEATURE */
+        .feature-showcase {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .feature-header {
+            padding: 20px 28px;
+            background: rgba(59, 130, 246, 0.07);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-header span {
+            font-size: 0.75rem;
+            color: var(--dim);
+        }
+
+        .chat-demo {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-bubble {
+            max-width: 80%;
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+        }
+
+        .chat-bubble.bot {
+            align-self: flex-start;
+        }
+
+        .bubble-text {
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .chat-bubble.user .bubble-text {
+            background: rgba(59, 130, 246, 0.18);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #BFDBFE;
+            border-radius: 14px 14px 2px 14px;
+        }
+
+        .chat-bubble.bot .bubble-text {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: #CBD5E1;
+            border-radius: 14px 14px 14px 2px;
+        }
+
+        .citation-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .citation-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.28);
+            border-radius: 8px;
+            padding: 5px 12px;
+            font-size: 0.72rem;
+            color: var(--accent2);
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .citation-chip:hover {
+            background: rgba(16, 185, 129, 0.18);
+        }
+
+        .citation-chip .ci {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .latency-row {
+            margin-top: 8px;
+            font-size: 0.7rem;
+            color: var(--dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* STACK TABLE */
+        .stack-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .stack-table th {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 14px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stack-table td {
+            padding: 14px 20px;
+            font-size: 0.83rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: top;
+        }
+
+        .stack-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .stack-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .td-label {
+            color: var(--accent2);
+            font-weight: 700;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .td-comp {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .td-comp small {
+            display: block;
+            color: var(--dim);
+            font-weight: 400;
+            font-size: 0.74rem;
+            margin-top: 3px;
+        }
+
+        .td-why {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .tag {
+            display: inline-block;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 0.67rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-b {
+            background: rgba(59, 130, 246, 0.1);
+            color: #93C5FD;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .tag-g {
+            background: rgba(16, 185, 129, 0.1);
+            color: #6EE7B7;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .tag-p {
+            background: rgba(139, 92, 246, 0.1);
+            color: #C4B5FD;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        /* N8N WORKFLOW */
+        .n8n-flow {
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            padding-bottom: 12px;
+        }
+
+        .n8n-node {
+            flex-shrink: 0;
+            min-width: 148px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            margin-right: 4px;
+            transition: all 0.3s;
+        }
+
+        .n8n-node:hover {
+            border-color: rgba(99, 179, 237, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .n8n-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            padding: 0 2px;
+        }
+
+        .n8n-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .n8n-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .n8n-desc {
+            font-size: 0.7rem;
+            color: var(--dim);
+            line-height: 1.5;
+        }
+
+        .n8n-badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.12);
+            color: #C4B5FD;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-size: 0.64rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* COMPLIANCE */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .comp-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .comp-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .comp-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .comp-desc {
+            font-size: 0.78rem;
+            color: var(--dim);
+            line-height: 1.55;
+        }
+
+        .comp-check {
+            color: var(--accent2);
+            font-size: 0.74rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 44px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 38px;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--bg);
+        }
+
+        .tl-phase {
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .tl-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .tl-item p {
+            font-size: 0.82rem;
+            color: var(--dim);
+            line-height: 1.65;
+        }
+
+        .tl-tasks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tl-task {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            color: #94A3B8;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 64px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+            border-top: 1px solid var(--border);
+        }
+
+        .cta h2 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: var(--dim);
+            max-width: 600px;
+            margin: 0 auto 36px;
+            font-size: 0.95rem;
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--accent), var(--accent3));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 11px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.3s;
+        }
+
+        .btn-p:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+        }
+
+        footer {
+            padding: 24px 64px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.74rem;
+            color: var(--dim);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        @media(max-width:768px) {
+
+            nav,
+            .sec,
+            .hero,
+            .cta,
+            footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .mac-card {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step {
+                grid-template-columns: 44px 1fr;
+            }
+
+            .flow-detail {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-brand">
+            <div class="nav-logo">AI</div>
+            <div>
+                <span class="nav-name">Pharma AI Platform</span>
+                <span class="nav-sub">On-Premises · Confidential Proposal</span>
+            </div>
+        </div>
+        <div class="nav-badge">🔒 On-Premises · February 2026</div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-eyebrow">🧬 Pharmaceutical Enterprise · On-Premises Deployment</div>
+        <h1>Your Data.<br>Your Server.<br><span class="g">Your Control.</span></h1>
+        <p class="hero-sub">A complete on-premises AI platform tailored for your pharma organisation — RAG document
+            intelligence, n8n email automation, and verifiable source citations with PDF page links. Everything runs
+            inside your own infrastructure. Nothing leaves your network.</p>
+
+        <div class="hero-pills">
+            <div class="pill"><span class="pill-icon">🖥️</span>
+                <div class="pill-text"><strong>Your Mac Server</strong><span>512 GB unified memory · Apple
+                        Silicon</span></div>
+            </div>
+            <div class="pill"><span class="pill-icon">📚</span>
+                <div class="pill-text"><strong>1 TB Document Library</strong><span>SOPs, Protocols, CSRs, Drug
+                        Manuals</span></div>
+            </div>
+            <div class="pill"><span class="pill-icon">🔗</span>
+                <div class="pill-text"><strong>Source Citations</strong><span>Every answer links to PDF + page
+                        number</span></div>
+            </div>
+            <div class="pill"><span class="pill-icon">📧</span>
+                <div class="pill-text"><strong>n8n Email Automation</strong><span>Read, classify, draft — on your
+                        server</span></div>
+            </div>
+            <div class="pill"><span class="pill-icon">🔒</span>
+                <div class="pill-text"><strong>Zero Cloud</strong><span>No data leaves your network</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY ON-PREMISES -->
+    <div class="sec sec-alt">
+        <div class="sec-tag">Section 01</div>
+        <div class="sec-h2">Why On-Premises Is the Right Choice</div>
+        <div class="sec-sub">Pharma data is subject to the strictest compliance requirements in any industry. Keeping
+            your AI entirely on your own infrastructure isn't just a preference — for many use cases, it is the only
+            compliant option.</div>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🏛️</div>
+                <h4>Regulatory Safety</h4>
+                <p>21 CFR Part 11, ICH E6(R3), GDPR, and most data residency frameworks require clinical and
+                    patient-adjacent data to remain within controlled infrastructure. On-premises satisfies this by
+                    design.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🔬</div>
+                <h4>Intellectual Property Protection</h4>
+                <p>Your clinical protocols, formulations, and unpublished trial strategies are your most valuable IP.
+                    On-premises means they never touch a third-party API or cloud model provider's servers.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h4>Performance at Scale</h4>
+                <p>With 512 GB of unified memory and Apple Silicon, your Mac server can run the world's most capable
+                    open-source LLM (Llama 3.1 405B) entirely in memory — faster than any cloud API.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🔌</div>
+                <h4>No Vendor Lock-In</h4>
+                <p>You own the entire stack. All software components are open-source. No dependency on any single
+                    vendor's API availability, pricing changes, or geopolitical restrictions.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h4>Complete Audit Ownership</h4>
+                <p>Every interaction log, model response, and approval trail is stored on your own servers. You — not a
+                    cloud provider — own the full GxP-compliant audit history.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌐</div>
+                <h4>Works Offline</h4>
+                <p>The entire system runs on your LAN. It does not require an internet connection after initial setup.
+                    Fully operational during network outages or internet-restricted environments.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- YOUR MAC SERVER -->
+    <div class="sec">
+        <div class="sec-tag">Section 02</div>
+        <div class="sec-h2">Your Server Is More Than Capable</div>
+        <div class="sec-sub">Your Mac with 512 GB unified memory is one of the most powerful AI inference machines
+            available today. It can run the largest available open-source LLM entirely in memory — no GPU required.
+        </div>
+
+        <div class="mac-card">
+            <div class="mac-highlight">
+                <h3>📊 Your Hardware vs. What We Need</h3>
+                <div class="spec-row"><span class="spec-key">Unified Memory</span><span class="spec-val">512 GB ✅</span>
+                </div>
+                <div class="spec-row"><span class="spec-key">Storage Available</span><span class="spec-val">1 TB
+                        ✅</span></div>
+                <div class="spec-row"><span class="spec-key">Chip</span><span class="spec-val b">Apple M2/M3 Ultra
+                        ✅</span></div>
+                <div class="spec-row"><span class="spec-key">Minimum RAM for Llama 3.1 70B</span><span
+                        class="spec-val">~40 GB</span></div>
+                <div class="spec-row"><span class="spec-key">Minimum RAM for Llama 3.1 405B</span><span
+                        class="spec-val">~243 GB</span></div>
+                <div class="spec-row"><span class="spec-key">Your available RAM headroom</span><span
+                        class="spec-val">269+ GB free</span></div>
+                <div class="spec-row"><span class="spec-key">Can run 405B model?</span><span class="spec-val"
+                        style="color:var(--accent2);">✅ Yes, fully in-memory</span></div>
+            </div>
+
+            <div>
+                <div class="mac-highlight" style="margin-bottom:16px;">
+                    <h3>🧠 Recommended Model — Llama 3.1 70B</h3>
+                    <div class="spec-row"><span class="spec-key">Model size on disk</span><span class="spec-val b">~40
+                            GB</span></div>
+                    <div class="spec-row"><span class="spec-key">RAM when loaded</span><span class="spec-val b">~42
+                            GB</span></div>
+                    <div class="spec-row"><span class="spec-key">Tokens/second (Apple Silicon)</span><span
+                            class="spec-val">~30–60 tok/s</span></div>
+                    <div class="spec-row"><span class="spec-key">Response time</span><span class="spec-val"
+                            style="color:var(--accent2);">1–4 seconds</span></div>
+                    <div class="spec-row"><span class="spec-key">Framework</span><span class="spec-val p">Ollama (macOS
+                            native)</span></div>
+                </div>
+                <div
+                    style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.22);border-radius:10px;padding:16px 18px;font-size:0.82rem;color:#94A3B8;line-height:1.65;">
+                    💡 <strong style="color:var(--accent2);">Why Llama 3.1 70B first?</strong> It loads in under 2
+                    minutes, delivers GPT-4-class accuracy for document Q&A, and leaves over 470 GB of RAM free for
+                    ChromaDB, n8n, and your 1 TB document index. The 405B model can be switched to at any time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW RAG WORKS -->
+    <div class="sec sec-alt">
+        <div class="sec-tag">Section 03</div>
+        <div class="sec-h2">How the RAG System Works</div>
+        <div class="sec-sub">RAG — Retrieval-Augmented Generation — means the AI reads your actual documents to answer
+            questions, rather than relying on memorised training data. Every answer is sourced from your files.</div>
+
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-name">
+                    <div class="flow-icon">📥</div>
+                    <div>
+                        <h4>You Ask a Question</h4><small>Chat Interface</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>A scientist, CRA, or regulatory affairs team member types a question in plain English — e.g.,
+                        <em>"What are the stopping rules for the Phase 2 trial?"</em> — into the browser-based chat
+                        interface on your intranet.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-name">
+                    <div class="flow-icon">🔢</div>
+                    <div>
+                        <h4>Question is Vectorised</h4><small>Local Embedding Model</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>The local embedding model (running on your Mac) converts your question into a mathematical
+                        "fingerprint". Your 1 TB document library is also permanently stored as fingerprints in a vector
+                        database on your server.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-name">
+                    <div class="flow-icon">⚡</div>
+                    <div>
+                        <h4>Instant Search Across 1 TB</h4><small>FAISS Vector Index</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>The system searches all your indexed documents in milliseconds — finding the 7 most relevant
+                        passages from any SOP, protocol, or CSR in your entire 1 TB library. It knows not just keyword
+                        matches, but <em>conceptual</em> similarity.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">4</div>
+                <div class="flow-name">
+                    <div class="flow-icon">🧠</div>
+                    <div>
+                        <h4>Llama 3.1 Reads & Explains</h4><small>Local LLM (No Internet)</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>Llama 3.1 70B — running locally on your Mac in memory — reads the retrieved passages and writes a
+                        clear, structured, professional answer. The model is told explicitly: only use what is in these
+                        passages. Nothing else.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">5</div>
+                <div class="flow-name">
+                    <div class="flow-icon">🔗</div>
+                    <div>
+                        <h4>Answer + Clickable Source Links</h4><small>PDF Page Citations</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>The response appears in the chat with the answer <em>and</em> clickable citation chips below it —
+                        showing the document name and exact page number. Clicking a chip opens that specific page of the
+                        PDF in the browser.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">6</div>
+                <div class="flow-name">
+                    <div class="flow-icon">🛡️</div>
+                    <div>
+                        <h4>Governance Check & Audit Log</h4><small>Risk Guardian + Logger</small>
+                    </div>
+                </div>
+                <div class="flow-detail">
+                    <p>Before the response is shown, the governance layer checks confidence levels, redacts any
+                        accidentally typed personal data, and writes a tamper-proof audit log entry with a cryptographic
+                        hash — satisfying 21 CFR Part 11 requirements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOURCE CITATION DEMO -->
+    <div class="sec">
+        <div class="sec-tag">Section 04</div>
+        <div class="sec-h2">Source Citations with PDF Page Links</div>
+        <div class="sec-sub">Every answer the bot gives shows exactly where in your documents the information came from.
+            One click opens the precise page of the source PDF — verifiable, auditable, and traceable.</div>
+
+        <div class="feature-showcase">
+            <div class="feature-header">
+                <span style="font-size:1.1rem;">💬</span>
+                <div>
+                    <h3>Live Chat Demo</h3>
+                    <span>How source citations appear in the interface</span>
+                </div>
+            </div>
+            <div class="chat-demo">
+
+                <!-- User message -->
+                <div class="chat-bubble user">
+                    <div class="bubble-text">What are the exclusion criteria for patients with renal impairment in the
+                        Phase 3 trial?</div>
+                </div>
+
+                <!-- Bot response -->
+                <div class="chat-bubble bot">
+                    <div class="bubble-text">
+                        Based on the indexed Protocol documentation, patients with an eGFR below 30 mL/min/1.73m² are
+                        excluded from enrollment. Additionally, patients who have received dialysis within the last 6
+                        months are ineligible, regardless of current eGFR status.<br><br>
+                        This criterion applies to all study sites and supersedes any site-level amendments unless a
+                        formal protocol deviation is approved by the Medical Monitor.
+                    </div>
+                    <div class="citation-row">
+                        <a class="citation-chip">
+                            <span>📄</span>
+                            <span class="ci">Protocol_PHIII_v3.1.pdf</span>
+                            <span
+                                style="background:rgba(16,185,129,0.2);padding:1px 6px;border-radius:4px;font-weight:700;">Page
+                                24</span>
+                        </a>
+                        <a class="citation-chip">
+                            <span>📄</span>
+                            <span class="ci">Protocol_PHIII_v3.1.pdf</span>
+                            <span
+                                style="background:rgba(16,185,129,0.2);padding:1px 6px;border-radius:4px;font-weight:700;">Page
+                                31</span>
+                        </a>
+                        <a class="citation-chip">
+                            <span>📄</span>
+                            <span class="ci">Investigator_Brochure_v7.pdf</span>
+                            <span
+                                style="background:rgba(16,185,129,0.2);padding:1px 6px;border-radius:4px;font-weight:700;">Page
+                                8</span>
+                        </a>
+                    </div>
+                    <div class="latency-row">⏱ 1,840 ms &nbsp;|&nbsp; ✅ Verified by Risk Guardian™ &nbsp;|&nbsp; 🔒
+                        Logged</div>
+                </div>
+
+                <!-- Second example -->
+                <div class="chat-bubble user">
+                    <div class="bubble-text">What is the SAE reporting timeline for a Grade 3 event?</div>
+                </div>
+
+                <div class="chat-bubble bot">
+                    <div class="bubble-text">
+                        Per the Safety Monitoring SOP, all Grade 3 Serious Adverse Events must be reported to the
+                        Sponsor within 24 hours of the site's first awareness, regardless of causality assessment. The
+                        initial safety report may be submitted verbally, followed by a written report within 7 calendar
+                        days using Form SAE-001.
+                    </div>
+                    <div class="citation-row">
+                        <a class="citation-chip">
+                            <span>📄</span>
+                            <span class="ci">SOP-CL-Safety-019.pdf</span>
+                            <span
+                                style="background:rgba(16,185,129,0.2);padding:1px 6px;border-radius:4px;font-weight:700;">Page
+                                12</span>
+                        </a>
+                        <a class="citation-chip">
+                            <span>📄</span>
+                            <span class="ci">SOP-CL-Safety-019.pdf</span>
+                            <span
+                                style="background:rgba(16,185,129,0.2);padding:1px 6px;border-radius:4px;font-weight:700;">Page
+                                15</span>
+                        </a>
+                    </div>
+                    <div class="latency-row">⏱ 2,110 ms &nbsp;|&nbsp; ✅ Verified by Risk Guardian™ &nbsp;|&nbsp; 🔒
+                        Logged</div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top:20px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:20px 24px;font-size:0.85rem;color:#94A3B8;line-height:1.7;">
+            🔗 <strong style="color:var(--accent);">How the links work:</strong> Clicking any citation chip opens the
+            source PDF directly in the browser at the exact page referenced — e.g., <code
+                style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:0.78rem;">/docs/Protocol_PHIII_v3.1.pdf#page=24</code>.
+            PDFs are served from your local server. No internet required.
+        </div>
+    </div>
+
+    <!-- TECH STACK -->
+    <div class="sec sec-alt">
+        <div class="sec-tag">Section 05</div>
+        <div class="sec-h2">Complete Technology Stack</div>
+        <div class="sec-sub">Every component is open-source, runs on macOS, and is specifically optimised for Apple
+            Silicon. Nothing requires an internet connection after initial setup.</div>
+
+        <table class="stack-table" style="border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+            <thead>
+                <tr>
+                    <th>Layer</th>
+                    <th>Component</th>
+                    <th>Why This Choice</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-label">LLM Engine</td>
+                    <td><span class="td-comp">Ollama + Llama 3.1 70B<small>Meta · Apple Silicon
+                                native</small></span><span class="tag tag-g">On-device</span><span class="tag tag-b">No
+                            internet</span></td>
+                    <td class="td-why">Ollama is purpose-built for macOS Apple Silicon. Llama 3.1 70B achieves
+                        GPT-4-class accuracy on document Q&A. One-command install, one-command model load.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">Embeddings</td>
+                    <td><span class="td-comp">nomic-embed-text (via Ollama)<small>Local · 768-dimension
+                                vectors</small></span><span class="tag tag-g">Local</span><span class="tag tag-b">No API
+                            key</span></td>
+                    <td class="td-why">Converts your 1 TB of documents into searchable vectors locally. No data sent to
+                        Jina or OpenAI. Runs fully on-device using Apple Neural Engine.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">Vector Store</td>
+                    <td><span class="td-comp">ChromaDB (local) → Milvus (scale)<small>Persistent ·
+                                Docker</small></span><span class="tag tag-g">On-disk</span><span
+                            class="tag tag-p">1TB-capable</span></td>
+                    <td class="td-why">Stores all document embeddings on your local disk. ChromaDB handles millions of
+                        document chunks. Scales to Milvus if needed for the full 1 TB library. Runs as a Docker
+                        container.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">RAG Backend</td>
+                    <td><span class="td-comp">FastAPI (Python)<small>REST API · Source citation
+                                engine</small></span><span class="tag tag-b">Port 8000</span><span class="tag tag-g">LAN
+                            only</span></td>
+                    <td class="td-why">Coordinates search, LLM calls, PII scrubbing, confidence validation, and source
+                        citation assembly. Serves the chat UI and document PDFs. Runs as a local service on your Mac.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">Email Automation</td>
+                    <td><span class="td-comp">n8n (self-hosted · Docker)<small>IMAP / SMTP /
+                                Exchange</small></span><span class="tag tag-p">Docker</span><span class="tag tag-b">Port
+                            5678</span></td>
+                    <td class="td-why">Open-source workflow automation. Watches your inbox, calls the local RAG API, and
+                        routes AI-drafted replies for human approval. Visual workflow editor. No cloud subscription
+                        required.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">Document Store</td>
+                    <td><span class="td-comp">Local filesystem / NAS<small>PDFs served via /docs/
+                                endpoint</small></span><span class="tag tag-g">On-prem</span></td>
+                    <td class="td-why">Your 1 TB of PDFs stay exactly where they are — on your Mac or connected NAS. The
+                        RAG backend indexes them and serves them for citation links. No copy leaves your network.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">Chat Interface</td>
+                    <td><span class="td-comp">Browser-based (HTML/JS)<small>Any browser · No app
+                                install</small></span><span class="tag tag-g">Intranet URL</span></td>
+                    <td class="td-why">Users access the chatbot by opening a URL on your intranet (e.g.,
+                        http://192.168.1.100). Works on any device — Mac, iPad, Windows PC. No software installation for
+                        end users.</td>
+                </tr>
+                <tr>
+                    <td class="td-label">Governance</td>
+                    <td><span class="td-comp">Risk Guardian™ + PII Scrubber + Audit Logger<small>Custom compliance
+                                layer</small></span><span class="tag tag-p">21 CFR Part 11</span></td>
+                    <td class="td-why">Validates AI confidence, automatically redacts sensitive identifiers, and writes
+                        cryptographically chained audit logs stored on your server for regulatory review.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- N8N EMAIL AUTOMATION -->
+    <div class="sec">
+        <div class="sec-tag">Section 06</div>
+        <div class="sec-h2">n8n Email Automation — How It Works</div>
+        <div class="sec-sub">n8n is a self-hosted automation engine — like Zapier, but running entirely on your Mac. It
+            watches your inbox, uses the local AI to understand and draft replies, and puts them in front of a human for
+            approval before anything is sent.</div>
+
+        <div class="n8n-flow">
+            <div class="n8n-node">
+                <div class="n8n-icon">📨</div>
+                <div class="n8n-name">Email Arrives</div>
+                <div class="n8n-desc">n8n monitors your inbox via IMAP in real-time</div>
+                <div class="n8n-badge">IMAP Trigger</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">🧹</div>
+                <div class="n8n-name">Extract & Clean</div>
+                <div class="n8n-desc">Strips HTML, removes signatures, isolates the core question</div>
+                <div class="n8n-badge">n8n Function</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">🗂️</div>
+                <div class="n8n-name">Classify Type</div>
+                <div class="n8n-desc">Protocol query / SAE / SOP question / General enquiry</div>
+                <div class="n8n-badge">Local AI Call</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">📚</div>
+                <div class="n8n-name">RAG Search</div>
+                <div class="n8n-desc">Searches your 1 TB document library for relevant passages</div>
+                <div class="n8n-badge">FastAPI /chat</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">✍️</div>
+                <div class="n8n-name">Draft Reply</div>
+                <div class="n8n-desc">Llama 3.1 writes a professional, source-cited email response</div>
+                <div class="n8n-badge">Llama 3.1 Local</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">👤</div>
+                <div class="n8n-name">Human Review</div>
+                <div class="n8n-desc">Draft placed in Drafts / Teams notification before sending</div>
+                <div class="n8n-badge">Approval Gate</div>
+            </div>
+            <div class="n8n-arrow">→</div>
+            <div class="n8n-node">
+                <div class="n8n-icon">📤</div>
+                <div class="n8n-name">Send & Log</div>
+                <div class="n8n-desc">Approved email sent via SMTP. Full audit entry created</div>
+                <div class="n8n-badge">SMTP + Audit</div>
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px;">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+                <strong style="color:var(--accent2);">📧 CRO Enrolment Query</strong>
+                <p style="font-size:0.8rem;color:var(--dim);margin-top:8px;line-height:1.65;">Email: <em>"Can patients
+                        with eGFR &lt; 30 enroll?"</em><br>→ RAG finds Protocol Section 5.2<br>→ Draft: <em>"Per
+                        Protocol v3.1 Section 5.2 (Page 24), patients with eGFR &lt; 30 are excluded."</em></p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+                <strong style="color:var(--accent4);">⚠️ SAE Notification</strong>
+                <p style="font-size:0.8rem;color:var(--dim);margin-top:8px;line-height:1.65;">Email: <em>"Patient had
+                        Grade 3 liver enzyme elevation."</em><br>→ Classified as SAE<br>→ Draft includes 24-hr reporting
+                    deadline + Form SAE-001 checklist from SOP-CL-019.</p>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+                <strong style="color:var(--accent3);">📋 SOP Procedure Query</strong>
+                <p style="font-size:0.8rem;color:var(--dim);margin-top:8px;line-height:1.65;">Email: <em>"What's the
+                        procedure for a missed dose?"</em><br>→ RAG searches SOP library<br>→ Draft: step-by-step
+                    procedure from SOP-CL-019 with section references.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLIANCE -->
+    <div class="sec sec-alt">
+        <div class="sec-tag">Section 07</div>
+        <div class="sec-h2">Compliance & Governance — Built In</div>
+        <div class="sec-sub">The system is designed from the ground up to meet pharmaceutical regulatory requirements.
+            Every feature from the ground up is built with auditability and data integrity in mind.</div>
+
+        <div class="compliance-grid">
+            <div class="comp-card">
+                <div class="comp-icon">🏛️</div>
+                <div class="comp-name">21 CFR Part 11</div>
+                <div class="comp-desc">Every audit log entry is cryptographically chained using SHA-256. Tamper-evident,
+                    timestamped, and stored on your server.</div>
+                <div class="comp-check">✓ Immutable audit trail</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon">🌍</div>
+                <div class="comp-name">GDPR / Data Residency</div>
+                <div class="comp-desc">Subject IDs, Patient Initials, Site Numbers, and email addresses are
+                    automatically detected and redacted before the AI processes anything.</div>
+                <div class="comp-check">✓ PII auto-redaction</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon">🔬</div>
+                <div class="comp-name">GxP / GCP</div>
+                <div class="comp-desc">Full input/output traceability for every AI interaction. Zero black-box decisions
+                    — every answer is sourced and cited with page references.</div>
+                <div class="comp-check">✓ Full traceability</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon">🚦</div>
+                <div class="comp-name">Zero Hallucination Policy</div>
+                <div class="comp-desc">If the AI's confidence score falls below the defined threshold, it refuses to
+                    answer and escalates to a human expert instead of guessing.</div>
+                <div class="comp-check">✓ Confidence gating</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon">👤</div>
+                <div class="comp-name">Human-in-the-Loop</div>
+                <div class="comp-desc">No email is ever sent without explicit human review and approval. The AI drafts —
+                    a person approves. Mandatory for GxP-regulated communications.</div>
+                <div class="comp-check">✓ Mandatory approval gate</div>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon">🔐</div>
+                <div class="comp-name">Data Sovereignty</div>
+                <div class="comp-desc">All AI processing, document indexing, model inference, and logs happen on your
+                    Mac server. No data — not even query text — is transmitted externally.</div>
+                <div class="comp-check">✓ 100% on-premises</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPLEMENTATION TIMELINE -->
+    <div class="sec">
+        <div class="sec-tag">Section 08</div>
+        <div class="sec-h2">Implementation Plan</div>
+        <div class="sec-sub">A structured, phased approach from your existing Mac server to a fully operational AI
+            platform — with your team testing it every step of the way.</div>
+
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-phase">Phase 1 · Week 1</div>
+                <h4>Foundation — Model & Infrastructure Setup</h4>
+                <p>Install Docker and Ollama on your Mac. Pull Llama 3.1 70B model weights and nomic-embed-text.
+                    Configure ChromaDB for document storage. Verify the entire local AI pipeline is working end-to-end
+                    with a small test document.</p>
+                <div class="tl-tasks">
+                    <span class="tl-task">Docker install</span>
+                    <span class="tl-task">Ollama + Llama 3.1 70B</span>
+                    <span class="tl-task">nomic-embed-text</span>
+                    <span class="tl-task">ChromaDB setup</span>
+                    <span class="tl-task">Pipeline smoke test</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-phase">Phase 2 · Week 2</div>
+                <h4>Knowledge Base — Index Your 1 TB Library</h4>
+                <p>Run the document preprocessing pipeline across your full document library. Each PDF is parsed
+                    page-by-page, chunked with sentence awareness, and embedded with source + page metadata stored. This
+                    is a one-time process that runs in the background.</p>
+                <div class="tl-tasks">
+                    <span class="tl-task">PDF ingestion pipeline</span>
+                    <span class="tl-task">Page-level chunking</span>
+                    <span class="tl-task">Embedding generation</span>
+                    <span class="tl-task">Vector index build</span>
+                    <span class="tl-task">Source metadata storage</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-phase">Phase 3 · Week 2–3</div>
+                <h4>Chat Interface — RAG + Source Citations Live</h4>
+                <p>Deploy the FastAPI backend and chat UI on your intranet. Configure the source citation engine so
+                    every answer shows document name and page number with working PDF links. Run initial Q&A tests with
+                    your team using real documents.</p>
+                <div class="tl-tasks">
+                    <span class="tl-task">FastAPI deployment</span>
+                    <span class="tl-task">Chat UI (intranet URL)</span>
+                    <span class="tl-task">PDF link serving</span>
+                    <span class="tl-task">Citation chip UI</span>
+                    <span class="tl-task">Team Q&A testing</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-phase">Phase 4 · Week 3</div>
+                <h4>Email Automation — n8n Setup</h4>
+                <p>Deploy n8n via Docker. Connect to your email server (IMAP/SMTP/Exchange). Build the full email
+                    classification and draft-generation workflow. Configure the human approval step — drafts routed to
+                    Drafts folder or Teams notification before any email is sent.</p>
+                <div class="tl-tasks">
+                    <span class="tl-task">n8n Docker deploy</span>
+                    <span class="tl-task">IMAP/SMTP connect</span>
+                    <span class="tl-task">Classification workflow</span>
+                    <span class="tl-task">Draft-generation workflow</span>
+                    <span class="tl-task">Human approval gate</span>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-phase">Phase 5 · Week 4</div>
+                <h4>Governance, Compliance & Go-Live</h4>
+                <p>Configure the Risk Guardian confidence thresholds for your document types. Set up PII redaction rules
+                    specific to your data (Subject IDs, Site Codes, etc.). Configure audit log retention. Conduct User
+                    Acceptance Testing with your pilot team. Staff training session. Go live.</p>
+                <div class="tl-tasks">
+                    <span class="tl-task">Risk Guardian tuning</span>
+                    <span class="tl-task">PII rules config</span>
+                    <span class="tl-task">Audit log retention</span>
+                    <span class="tl-task">UAT with pilot team</span>
+                    <span class="tl-task">Staff training (2 hrs)</span>
+                    <span class="tl-task">✅ Go-live</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Ready to Get Started?</h2>
+        <p>Your server is already capable. Your documents are already there. The next step is a 30-minute technical
+            discovery call to confirm your network configuration and kick off Phase 1.</p>
+        <button class="btn-p">📅 Schedule Discovery Call</button>
+        <p style="margin-top:20px;font-size:0.78rem;color:var(--dim);">All software used is open-source · Full source
+            code ownership · No external dependencies after setup</p>
+    </div>
+
+    <footer>
+        <span>© 2026 Artechsolutions — Pharma AI Platform</span>
+        <span>On-Premises Proposal · Confidential · February 2026</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);">v1.0</span>
+    </footer>
+
+</body>
+
+</html>
