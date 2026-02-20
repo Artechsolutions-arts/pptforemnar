@@ -1146,118 +1146,14 @@
                 <div class="gc" style="padding:20px;">
                     <div style="font-size:.68rem;font-weight:700;letter-spacing:2px;color:#003e84;margin-bottom:12px;">
                         WORKFLOW 1 — DOCUMENT Q&amp;A (RAG)</div>
-                    <div style="display:flex;flex-direction:column;gap:8px;">
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-                            <div class="fs-num" style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;">1
-                            </div>
-                            <div><strong style="font-size:.82rem;">📥 Ingest</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">Upload SOPs, protocols,
-                                    manuals from your ~1TB library</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-                            <div class="fs-num" style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;">2
-                            </div>
-                            <div><strong style="font-size:.82rem;">🔢 Embed</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">AI converts text into
-                                    local vector embeddings — no cloud</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-                            <div class="fs-num" style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;">3
-                            </div>
-                            <div><strong style="font-size:.82rem;">🔍 Retrieve</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">User asks → top
-                                    relevant paragraphs fetched in ms</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-                            <div class="fs-num" style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;">4
-                            </div>
-                            <div><strong style="font-size:.82rem;">🧠 Generate</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">On-prem LLM writes a
-                                    precise, grounded answer</p>
-                            </div>
-                        </div>
-                        <div style="display:flex;gap:10px;align-items:center;padding:8px 0;">
-                            <div class="fs-num" style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;">5
-                            </div>
-                            <div><strong style="font-size:.82rem;">✅ Cite &amp; Log</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">Answer returned with
-                                    PDF + page citations. Audit logged.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="workflow_rag.png" alt="RAG Workflow Diagram"
+                        style="width:100%;height:auto;border-radius:8px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
                 </div>
                 <div class="gc" style="padding:20px;background:rgb(255, 255, 255);border-color:rgb(255, 255, 255);">
                     <div style="font-size:.68rem;font-weight:700;letter-spacing:2px;color:#00059f;margin-bottom:12px;">
                         ✉️ WORKFLOW 2 — EMAIL DRAFTING (n8n)</div>
-                    <div style="display:flex;flex-direction:column;gap:8px;">
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(139,92,246,.2);">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);">
-                                1</div>
-                            <div><strong style="font-size:.82rem;">🔔 Monitor</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">n8n watches incoming
-                                    mailbox for new emails</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(139,92,246,.2);">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);">
-                                2</div>
-                            <div><strong style="font-size:.82rem;">🏷️ Classify</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">AI classifies email
-                                    type (inquiry, RFQ, complaint…)</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(139,92,246,.2);">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);">
-                                3</div>
-                            <div><strong style="font-size:.82rem;">🔍 Retrieve Context</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">RAG fetches relevant
-                                    docs from internal library</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(139,92,246,.2);">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);">
-                                4</div>
-                            <div><strong style="font-size:.82rem;">📝 Draft Reply</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">LLM writes a
-                                    professional, context-grounded response</p>
-                            </div>
-                        </div>
-                        <div
-                            style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(139,92,246,.2);background:rgba(244,63,94,.06);border-radius:8px;padding:10px;">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(244,63,94,.2);border-color:rgba(244,63,94,.5);">
-                                5</div>
-                            <div><strong style="font-size:.82rem;color:#fda4af;">✅ Human Approval ←
-                                    MANDATORY</strong>
-                                <p style="font-size:.75rem;color:#fda4af;margin-top:2px;font-weight:600;">Email
-                                    CANNOT be sent without explicit user approval</p>
-                            </div>
-                        </div>
-                        <div style="display:flex;gap:10px;align-items:center;padding:8px 0;">
-                            <div class="fs-num"
-                                style="width:26px;height:26px;font-size:.7rem;flex-shrink:0;background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);">
-                                6</div>
-                            <div><strong style="font-size:.82rem;">📤 Send &amp; Log</strong>
-                                <p style="font-size:.75rem;color:var(--dim);margin-top:2px;">Email sent. Full action
-                                    log saved for compliance audit.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="workflow_email.png" alt="Email Drafting Workflow Diagram"
+                        style="width:100%;height:auto;border-radius:8px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);">
                 </div>
             </div>
         </section>
